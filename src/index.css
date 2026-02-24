@@ -305,8 +305,7 @@
     background: url("/hacksus_logo.svg") center / contain no-repeat;
     transform: translateY(0.24em);
     filter:
-      drop-shadow(0.12em 0.14em 0.22em rgba(255, 49, 46, 0.35))
-      drop-shadow(0.18em 0.26em 0.55em rgba(0, 0, 0, 0.75));
+      drop-shadow(0.12em 0.14em 0.22em rgba(255, 49, 46, 0.35)) drop-shadow(0.18em 0.26em 0.55em rgba(0, 0, 0, 0.75));
     will-change: transform, filter;
   }
 
@@ -348,8 +347,7 @@
     transform: translate(-0.4em, 0.04em);
     letter-spacing: 0.02em;
     filter:
-      drop-shadow(0 0.52em 0.55em rgba(0, 0, 0, 0.55))
-      drop-shadow(0 0 0.22em rgba(255, 49, 46, 0.28));
+      drop-shadow(0 0.52em 0.55em rgba(0, 0, 0, 0.55)) drop-shadow(0 0 0.22em rgba(255, 49, 46, 0.28));
   }
 
   .hacksus-word-face {
@@ -459,6 +457,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+
     .hacksus-word-face,
     .hacksus-h::before,
     .hacksus-h::after,
@@ -647,7 +646,7 @@
 
 .landing-title {
   margin-top: 0.65rem;
-  font-size: clamp(2.6rem, 5.6vw, 5.1rem);
+  font-size: clamp(2.4rem, 4.8vw, 4.6rem);
   line-height: 1;
 }
 
@@ -1187,6 +1186,7 @@
 }
 
 @keyframes hacksus-title-glitch-a {
+
   0%,
   12%,
   24%,
@@ -1251,6 +1251,7 @@
 }
 
 @keyframes hacksus-title-glitch-b {
+
   0%,
   15%,
   30%,
@@ -1314,6 +1315,7 @@
 }
 
 @keyframes hacksus-title-face-flicker {
+
   0%,
   100% {
     opacity: 1;
@@ -1353,6 +1355,7 @@
 }
 
 @keyframes hacksus-title-swatch-flicker {
+
   0%,
   100% {
     opacity: 0.92;

@@ -649,7 +649,7 @@ const CarbonX = () => {
         />
 
         {/* Hero */}
-        <section className="relative pt-16 md:pt-20 pb-8 md:pb-12">
+        <section className="relative pt-12 md:pt-14 pb-4 md:pb-6">
           <div className="container max-w-[1100px] px-6">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -661,7 +661,7 @@ const CarbonX = () => {
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.03 }}
-                className="mb-1.5 flex w-full max-w-full items-center justify-center gap-3 text-center sm:mb-2 sm:gap-3"
+                className="mb-1 mt-6 flex w-full max-w-full items-center justify-center gap-2 text-center sm:mb-1 sm:gap-3"
               >
                 <span className="hidden h-px w-6 bg-border/60 sm:block" aria-hidden="true" />
                 <span className="w-full max-w-[46ch] px-1 text-balance font-mono text-[9px] uppercase leading-[1.2] tracking-[0.12em] text-muted-foreground sm:max-w-none sm:px-0 sm:text-[10px] sm:leading-normal sm:tracking-[0.22em]">
@@ -702,7 +702,7 @@ const CarbonX = () => {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.07 }}
-                className="mt-1 md:mt-2 mb-8 md:mb-10 flex flex-col items-center justify-center relative z-10 w-full"
+                className="mt-1 md:mt-2 mb-4 md:mb-5 flex flex-col items-center justify-center relative z-10 w-full"
               >
                 <div className="flex items-center gap-4 mb-2">
                   <span className="h-[1px] w-6 sm:w-12 bg-gradient-to-r from-transparent to-white/20 block" aria-hidden="true" />
@@ -722,7 +722,7 @@ const CarbonX = () => {
                     durationMs={1400}
                     maxIterations={18}
                     numbersOnly={true}
-                    parentClassName="relative z-10 font-display text-[4rem] sm:text-[5rem] md:text-[6rem] leading-none tabular-nums tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 drop-shadow-[0_8px_32px_rgba(255,255,255,0.06)]"
+                    parentClassName="relative z-10 font-display text-[3.2rem] sm:text-[4rem] md:text-[5rem] leading-none tabular-nums tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 drop-shadow-[0_8px_32px_rgba(255,255,255,0.06)]"
                     className="mix-blend-screen"
                     encryptedClassName="opacity-30"
                     aria-label={`Total prize pool ${carbonX.prizeAmount}`}
@@ -734,9 +734,9 @@ const CarbonX = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
-                className="landing-tracks-preview w-full max-w-[52rem]"
+                className="landing-tracks-preview w-full max-w-[50rem]"
               >
-                <div className="mx-auto rounded-none card-beveled border border-border/70 bg-card/40 backdrop-blur-sm px-5 py-3 md:px-6 md:py-3.5">
+                <div className="mx-auto rounded-none card-beveled border border-border/70 bg-card/40 backdrop-blur-sm px-4 py-2 md:px-5 md:py-2.5">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
                     <div className="flex items-center gap-2">
                       <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.34em] text-primary shadow-[0_0_0_1px_rgba(255,49,46,0.06),0_14px_40px_rgba(255,49,46,0.08)]">
@@ -780,90 +780,79 @@ const CarbonX = () => {
                         <div
                           key={t.title}
                           className={cn(
-                            "group relative h-full overflow-hidden text-left rounded-none card-beveled border border-border/70 bg-background/5 px-4 py-3 transition hover:bg-background/10 hover:border-border/90",
-                            t.badge === "02" && "card-beveled-mirror",
+                            "group relative flex flex-col justify-between h-full p-4 overflow-hidden border bg-background/5 transition-all duration-300 hover:bg-background/10 hover:border-primary/30",
+                            t.badge === "01" ? "rounded-tl-2xl rounded-br-2xl border-border/40" : "rounded-tr-2xl rounded-bl-2xl border-border/40"
                           )}
                         >
+                          {/* Grainy overlay */}
                           <div
                             className={cn(
-                              "pointer-events-none absolute inset-0 opacity-[0.06]",
+                              "pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay",
                               ui.patternClass,
                             )}
                             aria-hidden="true"
                           />
-                          <div
-                            className={cn(
-                              "pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                              ui.washClass,
-                            )}
-                            aria-hidden="true"
-                          />
-                          <div
-                            className="pointer-events-none absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/80 via-primary/25 to-transparent"
-                            aria-hidden="true"
-                          />
-                          <div
-                            className="pointer-events-none absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/80 via-primary/25 to-transparent"
-                            aria-hidden="true"
-                          />
-                          <div className="pointer-events-none absolute -top-7 -right-5 font-mono text-[5.4rem] leading-none tracking-[0.16em] text-transparent opacity-75 [-webkit-text-stroke:1px_hsl(var(--foreground)_/_0.18)] [text-shadow:0_0_32px_hsl(var(--primary)_/_0.12)] group-hover:opacity-90">
-                            {t.badge}
-                          </div>
 
-                          <div className="relative flex h-full flex-col">
-                            <div className="flex items-center justify-between gap-2">
-                              <div className="font-mono text-[10px] tracking-[0.56em] text-muted-foreground uppercase">
-                                TRACK {t.badge}{" "}
-                                <span className="tracking-[0.34em] text-primary/80">
-                                  · {ui.lane}
-                                </span>
+                          {/* Top Meta info */}
+                          <div className="relative z-10 flex items-start justify-between gap-4 mb-8">
+                            <div>
+                              <div className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.4em] text-muted-foreground/70 mb-1">
+                                [ Track {t.badge} ]
                               </div>
-                              <span
-                                className={cn(
-                                  "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.34em]",
-                                  ui.metaPillClass,
-                                )}
-                              >
-                                <TrackIcon
-                                  className={cn("h-3.5 w-3.5", ui.metaIconClass)}
-                                  aria-hidden="true"
-                                />
+                              <div className="font-display text-3xl leading-none text-foreground drop-shadow-sm group-hover:text-primary transition-colors duration-300">
+                                {t.title}
+                              </div>
+                            </div>
+                            <div className="flex flex-col items-end text-right">
+                              <span className="inline-flex whitespace-nowrap h-6 sm:h-auto min-w-[125px] sm:min-w-0 items-center justify-center gap-1.5 px-2 py-0.5 font-mono text-[8.5px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-primary/80 border border-primary/20 rounded-sm bg-primary/5">
+                                <TrackIcon className="h-3 w-3 shrink-0" strokeWidth={1.5} />
                                 {t.meta}
                               </span>
+                              <div className="mt-1.5 font-mono text-[9px] tracking-[0.2em] text-muted-foreground/50 uppercase">
+                                {ui.lane}
+                              </div>
                             </div>
-                            <div className="mt-2 font-display text-base md:text-lg tracking-wide text-foreground/95">
-                              {t.title}
-                            </div>
-                            <p className="mt-1 text-[13px] text-muted-foreground leading-snug">
+                          </div>
+
+                          {/* Description */}
+                          <div className="relative z-10 grow">
+                            <p className="font-mono text-xs text-muted-foreground/80 leading-relaxed max-w-[85%] border-l border-primary/20 pl-3">
                               {t.blurb}
                             </p>
+                          </div>
 
-                            <div className="mt-auto pt-2.5 border-t border-border/60 flex items-center justify-between gap-2">
-                              <Button
-                                type="button"
-                                variant={ui.detailsVariant}
-                                onClick={() => openTrackDetailsFromHome(t.registerKey as TrackKey)}
-                                className={cn(
-                                  "h-8 rounded-xl px-3 font-display text-[11px] tracking-[0.2em]",
-                                  ui.detailsClass,
-                                )}
-                                aria-label={`View ${t.title} track details`}
-                              >
-                                DETAILS <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-                              </Button>
-                              <Button
-                                type="button"
-                                onClick={() =>
-                                  openRegistration(
-                                    t.registerKey as keyof typeof carbonX.registerUrls,
-                                  )
-                                }
-                                className="h-8 rounded-xl px-3 font-display text-[11px] tracking-[0.2em] shadow-[0_14px_42px_hsl(var(--primary)/0.18)] hover:shadow-[0_18px_58px_hsl(var(--primary)/0.26)]"
-                                aria-label={`Register for ${t.title} on KonfHub`}
-                              >
-                                REGISTER <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-                              </Button>
-                            </div>
+                          {/* Actions */}
+                          <div className="relative z-10 flex items-center justify-between mt-4 pt-3 border-t border-border/40">
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              onClick={() => openTrackDetailsFromHome(t.registerKey as TrackKey)}
+                              className="h-8 px-0 hover:bg-transparent font-mono text-[10px] tracking-[0.3em] text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all"
+                              aria-label={`View ${t.title} track details`}
+                            >
+                              [ DETAILS ]
+                            </Button>
+
+                            <Button
+                              type="button"
+                              onClick={() =>
+                                openRegistration(
+                                  t.registerKey as keyof typeof carbonX.registerUrls,
+                                )
+                              }
+                              className="group/btn relative h-9 overflow-hidden rounded-none bg-transparent hover:bg-transparent border border-primary/30 px-6 font-mono text-[10px] uppercase tracking-[0.3em] text-primary transition-all duration-300 hover:border-primary hover:text-white"
+                              aria-label={`Register for ${t.title} on KonfHub`}
+                            >
+                              <span className="absolute inset-0 bg-primary translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
+                              <span className="relative z-10 flex items-center gap-2">
+                                REGISTER <ArrowRight className="h-3 w-3 -rotate-45 group-hover/btn:rotate-0 transition-transform duration-300" />
+                              </span>
+                            </Button>
+                          </div>
+
+                          {/* Huge background number */}
+                          <div className="pointer-events-none absolute -bottom-12 -right-6 font-display text-[12rem] leading-none text-transparent opacity-5 [-webkit-text-stroke:1px_hsl(var(--foreground)_/_1)] font-bold group-hover:scale-110 transition-transform duration-700 ease-out">
+                            {t.badge}
                           </div>
                         </div>
                       );
