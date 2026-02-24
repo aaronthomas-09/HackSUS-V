@@ -646,8 +646,14 @@
 
 .landing-title {
   margin-top: 0.65rem;
-  font-size: clamp(2.4rem, 4.8vw, 4.6rem);
+  font-size: clamp(2.2rem, 8.5vw, 4.6rem);
   line-height: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .landing-brand {
@@ -656,14 +662,20 @@
   display: inline-block;
   transform: scaleX(1.12);
   transform-origin: center;
+  padding-left: 0.22em;
+  /* exactly offsets the trailing space */
+  margin: 0 0.15em;
+  /* pulls 2026 slightly closer to CARBONX */
 }
 
 .landing-year {
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.12em;
-  font-size: 1em;
+  font-size: 1.05em;
   opacity: 0.55;
-  margin-left: 0.28em;
+  display: inline-block;
+  padding-left: 0.12em;
+  /* exactly offsets the trailing space */
 }
 
 .font-mokoto {

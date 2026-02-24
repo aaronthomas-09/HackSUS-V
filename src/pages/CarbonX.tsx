@@ -684,7 +684,7 @@ const CarbonX = () => {
                   color="hsl(var(--foreground) / 0.92)"
                   shineColor="hsl(var(--primary))"
                   yoyo={true}
-                />{" "}
+                />
                 <DecryptedText
                   text={carbonX.year}
                   animateOn="view"
