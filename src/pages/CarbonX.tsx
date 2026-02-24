@@ -28,8 +28,7 @@ const carbonX = {
   eventName: "CARBONX",
   year: "2026",
   tagline: "INNOVATION BEYOND BOUNDARIES",
-  prizeAmount: "₹2,00,000",
-  prizeCaption: "PRIZE POOL",
+  prizeAmount: "₹1,00,000",
   description:
     "A 42 hour national hackathon where developers, innovators, and students from across India team up to build practical, high-impact solutions. The event brings together industry experts, mentors, and tech enthusiasts in a round-the-clock marathon of problem-solving, prototyping, and pure chaos-powered innovation.",
   date: "6–8 MARCH, 2026",
@@ -699,16 +698,38 @@ const CarbonX = () => {
                 />
               </h1>
 
-              <p className="landing-subtitle mx-auto text-muted-foreground">
-                A 42 hour national hackathon where developers, innovators, and students from across
-                India team up to build practical, high-impact solutions.
-              </p>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.07 }}
+                className="landing-prize"
+              >
+                <div className="landing-prize-panel px-5 py-4">
+                  <div className="landing-prize-label font-mono text-[10px] uppercase tracking-[0.56em] text-muted-foreground">
+                    <span className="landing-prize-rule" aria-hidden="true" />
+                    <span>Total prize pool</span>
+                    <span className="landing-prize-rule" aria-hidden="true" />
+                  </div>
+                  <DecryptedText
+                    text={carbonX.prizeAmount}
+                    animateOn="view"
+                    speed={55}
+                    durationMs={1400}
+                    maxIterations={18}
+                    numbersOnly={true}
+                    parentClassName="landing-prize-value font-display tabular-nums"
+                    className="text-foreground/95"
+                    encryptedClassName="text-foreground/95"
+                    aria-label={`Total prize pool ${carbonX.prizeAmount}`}
+                  />
+                </div>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
-                className="mt-5 w-full max-w-[52rem]"
+                className="landing-tracks-preview w-full max-w-[52rem]"
               >
                 <div className="mx-auto rounded-none card-beveled border border-border/70 bg-card/40 backdrop-blur-sm px-5 py-3 md:px-6 md:py-3.5">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
