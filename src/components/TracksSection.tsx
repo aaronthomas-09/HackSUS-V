@@ -95,7 +95,7 @@ const TracksSection = () => {
 
                 {/* Visit page */}
                 <p className="text-primary text-sm font-semibold drop-shadow-[0_0_8px_rgba(var(--color-primary),0.6)] group-hover:drop-shadow-[0_0_16px_rgba(var(--color-primary),0.8)] transition-all duration-500">
-                  Visit Page
+                  Click for more details <span className="text-primary">→</span>
                 </p>
 
                 {/* Bottom accent line */}

@@ -5,6 +5,8 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import DetailsSection from "@/components/DetailsSection";
 import TracksSection from "@/components/TracksSection";
+import CommunityPartnersSection from "@/components/CommunityPartnersSection";
+import ClubCollaboratorsSection from "@/components/ClubCollaboratorsSection";
 import PreEventsTimeline from "@/components/PreEventsTimeline";
 import ScheduleSection from "@/components/ScheduleSection";
 import SponsorsSection from "@/components/SponsorsSection";
@@ -63,10 +65,12 @@ const Index = () => {
         <AboutSection />
         <DetailsSection />
         <TracksSection />
+        <SponsorsSection />
+        <CommunityPartnersSection />
+        <ClubCollaboratorsSection />
         <PreEventsTimeline />
         {/* <ScheduleSection /> */}
         <CountdownTimer />
-        {/* <SponsorsSection /> */}
         {/* <FAQSection /> */}
         <Footer />
       </main>
