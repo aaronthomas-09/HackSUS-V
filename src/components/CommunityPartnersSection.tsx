@@ -28,6 +28,12 @@ const partners = [
         logo: "/images/waterMetro.webp",
         lightBg: false,
         link: "https://watermetro.co.in/"
+    },
+    {
+        name: "Unique World Robotics",
+        logo: "/images/unique.webp",
+        lightBg: false,
+        link: "https://www.uwrindia.com/"
     }
 ];
 
@@ -54,17 +60,21 @@ export default function CommunityPartnersSection() {
                     </div>
                 </motion.div>
 
-                {/* Logo Grid */}
+                {/* Logo Grid - 3 in first row, 2 centered in second */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                    // 2-col on mobile, 4-col on md+
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+                    className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-[1000px] mx-auto"
                 >
                     {partners.map((partner, index) => (
-                        <LogoCard key={partner.name} partner={partner} index={index} />
+                        <div
+                            key={partner.name}
+                            className="w-[calc(50%-1rem)] md:w-[calc(33.33%-2rem)] flex-shrink-0"
+                        >
+                            <LogoCard partner={partner} index={index} />
+                        </div>
                     ))}
                 </motion.div>
             </div>

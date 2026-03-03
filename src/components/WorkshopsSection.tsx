@@ -50,7 +50,7 @@ const columns: TrackColumn[] = [
                 date: "7 - Feb - 2026",
                 time: "2 PM - 3 PM",
                 location: "Multimedia Hall, Main Block",
-                instructors: ["Jonathan – Zach AI"],
+                instructors: ["Jonathan - Zach AI"],
                 status: "open",
                 registrationLink: "https://konfhub.com/hacksus-workshops",
             }
@@ -264,7 +264,7 @@ function WorkshopCard({
                         Registration for this session is now closed.
                     </span>
                 ) : (
-                    <Button variant="hero" size="default" className="w-full text-sm">
+                    <Button variant="hero" size="default" className="font-BebasNeue font-weight-800  w-full text-sm">
                         <a
                             href={workshop.registrationLink || "#"}
                             target="_blank"

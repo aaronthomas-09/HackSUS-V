@@ -425,7 +425,7 @@ const ScreenX = () => {
                                 email: "nevinjohn2003@gmail.com",
                             },
                             {
-                                name: "Alan Isaac",
+                                name: "Alan Issac",
                                 role: "Event Coordinator",
                                 phone: "+91 89219 32074",
                                 phoneLink: "+91XXXXXXXXXX",
