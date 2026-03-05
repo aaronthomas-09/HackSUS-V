@@ -770,7 +770,10 @@ const AstraX = () => {
                 style={{ filter: "brightness(1.3) contrast(1.1)" }}
               />
               <div className="w-px h-10 bg-white/15" />
-              <div className="rounded-lg px-4 py-2" style={{ background: "rgba(255,255,255,0.92)", border: "1px solid rgba(255,49,46,0.7)", boxShadow: "0 0 10px rgba(255,49,46,0.2)" }}>
+              <div
+                className="flex items-center justify-center rounded-xl px-4 py-2"
+                style={{ background: "rgba(255, 255, 255, 0.14)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.1)" }}
+              >
                 <img
                   src="/images/GDG_Cloud_Kochi_logo.png"
                   alt="GDG Cloud Kochi"

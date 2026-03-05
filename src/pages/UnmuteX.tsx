@@ -925,7 +925,11 @@ const UnmuteX = () => {
             <VinylSleeveDetail
                 isOpen={activeProblemId !== null}
                 onClose={() => setActiveProblemId(null)}
-                ps={PROBLEM_STATEMENTS.find(p => p.id === activeProblemId)}
+                ps={[
+                    { id: "01", title: "Scene-to-Scoring Assistant", description: "Film composers often spend significant time deciding tempo, tonal center, and thematic direction before actual composition begins. This challenge focuses on accelerating those early creative decisions—not generating full music, but providing clear, structured musical guidance.", inputs: ["Primary emotion", "Intensity (1-10)", "Musical style", "Scene duration"], outputs: ["Suggested tempo range", "Tonal center", "Basic harmonic progression", "4-bar MIDI motif"], constraints: "Rule-based or lightweight ML approaches are acceptable. MIDI output is sufficient; audio generation is not required." },
+                    { id: "02", title: "Loudness Compliance Agent", description: "In music, film, OTT, and broadcast workflows, loudness compliance is critical. Participants will build an AI agent that analyses audio loudness metrics to ensure delivery perfection.", inputs: ["LUFS (Intergrated/Short-term)", "True Peak levels", "Dynamic range"], outputs: ["Loudness timeline visualisation", "Non-compliant segment flags", "Indicated delivery targets"], constraints: "The agent must only analyse and explain—it must not process or modify the audio." },
+                    { id: "03", title: "Dialogue–Music Conflict Detection Agent", description: "Participants will build an AI agent that analyses dialogue and music stems to identify frequency overlap and masking, ensuring maximum dialogue intelligibility.", inputs: ["Dialogue stems", "Music background stems", "Frequency balance"], outputs: ["Frequency overlap maps", "Intelligibility warning zones", "Timeline conflict visualisation"], constraints: "The focus is on detection and explanation, not automatic correction." }
+                ].find(p => p.id === activeProblemId)}
             />
 
             {!isRegistrationActive && (

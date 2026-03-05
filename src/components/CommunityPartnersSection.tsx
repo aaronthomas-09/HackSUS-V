@@ -34,6 +34,11 @@ const partners = [
         logo: "/images/unique.webp",
         lightBg: false,
         link: "https://www.uwrindia.com/"
+    },
+    {
+        name: "ZappyHire",
+        logo: "/images/zappyhire.webp",
+        link: ""
     }
 ];
 
