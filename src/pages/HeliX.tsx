@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import BlueprintBackground from "@/components/BlueprintBackground";
 import DimensionLine from "@/components/DimensionLine";
 import Crosshair from "@/components/Crosshair";
-import TrackIntroOverlay from "@/components/TrackIntroOverlay";
 
 // ==================== KONFHUB REGISTRATION ====================
 function KonfHubRegistration() {
@@ -104,14 +103,6 @@ const HeliX = () => {
             ref={containerRef}
             className="min-h-screen relative selection:bg-primary/30 overflow-x-hidden text-foreground"
         >
-            <TrackIntroOverlay
-                trackTitleNode={
-                    <span className="font-display text-8xl md:text-[10rem] text-white font-bold leading-none tracking-normal">
-                        HELIX
-                    </span>
-                }
-            />
-
             <Crosshair containerRef={containerRef} color="#ff312e" />
             <div className="relative z-50">
                 {!isRegistrationActive && <Navbar />}

@@ -10,7 +10,6 @@ import DecryptedText from "@/components/DecryptedText";
 import ShinyText from "@/components/ShinyText";
 import SpotlightCard from "@/components/SpotlightCard";
 import Crosshair from "@/components/Crosshair";
-import TrackIntroOverlay from "@/components/TrackIntroOverlay";
 
 /* ── Oscilloscope Waveform ── */
 const OscilloscopeWave = ({ className = "" }: { className?: string }) => {
@@ -198,13 +197,6 @@ const SyncConX = () => {
             ref={containerRef}
             className="min-h-screen relative selection:bg-primary/30 overflow-x-hidden text-foreground"
         >
-            <TrackIntroOverlay
-                trackTitleNode={
-                    <span className="font-display text-7xl md:text-[10rem] text-white font-bold leading-none tracking-normal">
-                        SYNCCONX
-                    </span>
-                }
-            />
             {/* Crosshair cursor */}
             <Crosshair containerRef={containerRef} color="#ff312e" />
 
