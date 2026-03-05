@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Film, Clapperboard, Palette, Music, Scissors, Sparkles, Camera, Mic } from "lucide-react";
+import { ArrowLeft, Film, Clapperboard, Palette, Music, Scissors, Sparkles, Camera, Mic, ScrollText, Layout, Video, Layers, Sparkle } from "lucide-react";
 import { motion } from "motion/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -320,49 +320,66 @@ const ScreenX = () => {
                             </motion.section>
 
                             {/* Problem Statements */}
-                            {/* {(() => {
-                                const problemStatements = [
-                                    {
-                                        title: "AI-Powered Storyboard Synthesis and Automation",
-                                        desc: "Currently multimedia content creation, manually design storyboards for films remains a labor-intensive bottleneck, prone to iterative revisions and creative silos. Leverage state-of-the-art generative AI models to architect an intelligent system that automates storyboard generation from high-level narrative inputs.",
-                                        pdf: "#",
-                                    }
-                                ];
-                                return (
-                                    <motion.section
-                                        className="relative bg-black border border-primary/20 p-8 md:p-10"
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true, margin: "-50px" }}
-                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                    >
-                                        <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-                                        <h2 className="font-copperplate text-2xl md:text-3xl text-foreground tracking-wider mb-5">
-                                            Problem Statements
-                                        </h2>
-                                        <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-6">
-                                            {problemStatements.map((ps, i) => (
-                                                <motion.div
-                                                    key={i}
-                                                    className="relative bg-black border border-primary/10 p-6 md:p-8 flex flex-col h-full shadow-lg"
-                                                    initial={{ opacity: 0, y: 30 }}
-                                                    whileInView={{ opacity: 1, y: 0 }}
-                                                    viewport={{ once: true, margin: "-50px" }}
-                                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                                >
-                                                    <div className="absolute top-0 left-0 w-1 h-full bg-primary/70" />
-                                                    <h3 className="font-copperplate text-xl text-foreground tracking-wider mb-3">
-                                                        {ps.title}
-                                                    </h3>
-                                                    <p className="font-body text-muted-foreground mb-6 flex-1">
-                                                        {ps.desc}
-                                                    </p>
-                                                </motion.div>
-                                            ))}
-                                        </div>
-                                    </motion.section>
-                                );
-                            })()} */}
+                            <motion.section
+                                className="relative bg-black border border-primary/20 p-8 md:p-10"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                            >
+                                <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
+                                <h2 className="font-copperplate text-2xl md:text-3xl text-foreground tracking-wider mb-5">
+                                    Problem Statement
+                                </h2>
+                                <p className="font-body text-muted-foreground leading-relaxed text-base mb-10">
+                                    Develop an end-to-end AI-powered system to create a 3-5 minute recap video for Aadu 1 and Aadu 2, faithfully capturing the franchise's signature chaotic storytelling, absurd humor, unpredictable character dynamics, and cult following.
+                                </p>
+
+                                <div className="space-y-8">
+                                    {[
+                                        {
+                                            id: "01",
+                                            title: "Script Generation",
+                                            icon: ScrollText,
+                                            desc: "A 200-400 word script summarizing pivotal scenes, character arcs, and comedic beats from both films."
+                                        },
+                                        {
+                                            id: "02",
+                                            title: "Storyboard Automation",
+                                            icon: Layout,
+                                            desc: "Generate a 6-12 panel storyboard from the script, including scene descriptions, key visuals, transitions, and timing annotations."
+                                        },
+                                        {
+                                            id: "03",
+                                            title: "Video Synthesis",
+                                            icon: Video,
+                                            desc: "Produce a polished 3-5 minute video from the storyboard, incorporating AI-generated visuals, voiceover narrations, sound effects, background music, and chaotic editing effects reminiscent of the franchise."
+                                        }
+                                    ].map((checkpoint, i) => {
+                                        const Icon = checkpoint.icon;
+                                        return (
+                                            <div key={i} className="relative p-6 bg-white/[0.02] border border-white/5 rounded-xl group hover:border-primary/30 transition-all duration-500">
+                                                <div className="absolute top-4 right-4 text-[10px] font-mono text-primary/40 uppercase tracking-widest group-hover:text-primary transition-colors">
+                                                    [Checkpoint {checkpoint.id}]
+                                                </div>
+                                                <div className="flex items-start gap-5">
+                                                    <div className="mt-1 p-3 rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 transition-transform duration-500">
+                                                        <Icon size={20} />
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        <h3 className="font-copperplate text-lg text-white mb-2 tracking-wider group-hover:text-primary transition-colors">
+                                                            {checkpoint.title}
+                                                        </h3>
+                                                        <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                                                            {checkpoint.desc}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </motion.section>
                         </div>
 
                         {/* Sidebar */}

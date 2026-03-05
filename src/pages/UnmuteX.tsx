@@ -7,30 +7,41 @@ import Footer from "@/components/Footer";
 
 const PROBLEM_STATEMENTS = [
     {
-        id: "01",
+        id: "Checkpoint 01",
         title: "Audio Extraction & Instrument Classification (The 'Listening' Phase)",
-        oneLiner: "The system captures audio from the DAW tracks, analyzes the sonic characteristics, and accurately tags the instrument type.",
-        description: "The Workflow: 1.  The tool (via plugin API or DAW script) grabs short audio buffers or triggers a quick background render of the track.2.  This audio snippet is fed into an audio classification model.3.  The model returns an instrument tag (e.g., 'Strings,' 'Analog Pad,' 'Heavy Percussion') and frequency dominance. ",
-        inputs: ["Primary emotion", "Intensity (1-10)", "Musical style", "Scene duration"],
-        outputs: ["Suggested tempo range", "Tonal center", "Basic harmonic progression", "4-bar MIDI motif"],
+        oneLiner: "Capture audio from the DAW tracks, analyze the sonic characteristics, and accurately tag the instrument type.",
+        description: `The Goal: The system captures audio from the DAW tracks, analyzes the sonic characteristics, and accurately tags the instrument type.
+
+The Workflow:
+1. The tool (via plugin API or DAW script) grabs short audio buffers or triggers a quick background render of the track.
+2. This audio snippet is fed into an audio classification model.
+3. The model returns an instrument tag (e.g., 'Strings,' 'Analog Pad,' 'Heavy Percussion') and frequency dominance.`,
         constraints: "Rule-based or lightweight ML approaches are acceptable. MIDI output is sufficient; audio generation is not required."
     },
     {
-        id: "02",
-        title: "Loudness Compliance Agent",
-        oneLiner: "Build an AI agent that analyses audio loudness and clearly explains compliance with industry delivery standards.",
-        description: "In music, film, OTT, and broadcast workflows, loudness compliance is critical. Participants will build an AI agent that analyses audio loudness metrics to ensure delivery perfection.",
-        inputs: ["LUFS (Intergrated/Short-term)", "True Peak levels", "Dynamic range"],
-        outputs: ["Loudness timeline visualisation", "Non-compliant segment flags", "Indicated delivery targets"],
-        constraints: "The agent must only analyse and explain—it must not process or modify the audio."
+        id: "Checkpoint 02",
+        title: "The Logic Engine & Intelligent Naming",
+        oneLiner: "Use the audio tags to logically group the tracks and generate clean, standardized names.",
+        description: `The Goal: Use the audio tags from Checkpoint 01 to logically group the tracks and generate clean, standardized names.
+
+The Workflow:
+1. ​The engine looks at the chaotic list of tracks and the new instrument tags it just generated.
+2. ​It identifies overlapping layers or tracks with similar spectral characteristics.  
+3. ​It maps out how to group them (e.g., taking 8 raw pad layers and mapping them to a single "Pads Wide" group).  
+4. ​It generates a clear, descriptive name for the new consolidated track based on the instrument and spectral data. `,
+        constraints: "The agent must only analyze and explain—it must not process or modify the audio."
     },
     {
-        id: "03",
-        title: "Dialogue-Music Conflict Detection Agent",
-        oneLiner: "Create an AI agent that detects and explains when background music masks dialogue clarity.",
-        description: "Participants will build an AI agent that analyses dialogue and music stems to identify frequency overlap and masking, ensuring maximum dialogue intelligibility.",
-        inputs: ["Dialogue stems", "Music background stems", "Frequency balance"],
-        outputs: ["Frequency overlap maps", "Intelligibility warning zones", "Timeline conflict visualisation"],
+        id: "Checkpoint 03",
+        title: "Automated Execution & Cleanup ",
+        oneLiner: "Push the decisions back into the DAW to physically alter the session, creating the final mix-ready deliverable.",
+        description: `Goal: Push the decisions back into the DAW to physically alter the session, creating the final mix-ready deliverable.
+
+​The Task: Write the commands that execute the cleanup automatically.
+
+​What it needs to do: The tool must automatically rename the tracks, route them into their new consolidated groups, and execute "bounce-in-place" commands to convert heavy MIDI instruments into CPU-friendly audio renders.
+
+Workflow Win: The final output is a lightweight, clearly labeled session that is immediately ready for a mix engineer, proving the tool saves hours of manual labor.`,
         constraints: "The focus is on detection and explanation, not automatic correction."
     }
 ];
@@ -191,7 +202,7 @@ const ProblemStatementRow = ({ ps, isActive, isDimmed, onClick }: { ps: any, isA
                 onClick={onClick}
                 className="w-full text-left px-6 py-8 flex items-start gap-6 group"
             >
-                <span className="font-mono text-sm text-muted-foreground pt-1.5 opacity-50 group-hover:opacity-100 transition-opacity">[{ps.id}]</span>
+                <span className="font-mono text-[10px] text-muted-foreground pt-1.5 opacity-50 group-hover:opacity-100 transition-opacity w-24 flex-shrink-0">[{ps.id}]</span>
                 <div className="flex-1">
                     <div className="flex items-center justify-between gap-4 mb-2">
                         <h3 className="text-xl md:text-2xl font-display text-white group-hover:text-primary transition-colors tracking-widest uppercase">
@@ -307,7 +318,7 @@ const VinylSleeveDetail = ({ ps, isOpen, onClose }: { ps: any, isOpen: boolean, 
                                 transition={{ delay: 0.4, duration: 0.8 }}
                             >
                                 <div className="flex items-center gap-3 mb-6">
-                                    <span className="px-3 py-1 bg-primary/10 border border-primary/20 rounded-full font-mono text-[10px] text-primary font-bold tracking-widest uppercase">Problem Record {ps.id}</span>
+                                    <span className="px-3 py-1 bg-primary/10 border border-primary/20 rounded-full font-mono text-[10px] text-primary font-bold tracking-widest uppercase">{ps.id} Detail</span>
                                     <div className="h-px w-20 bg-white/10" />
                                 </div>
 
@@ -318,43 +329,11 @@ const VinylSleeveDetail = ({ ps, isOpen, onClose }: { ps: any, isOpen: boolean, 
                                 <div className="space-y-12 max-w-2xl">
                                     <section className="relative">
                                         <div className="absolute -left-6 top-1 bottom-1 w-[2px] bg-primary/30" />
-                                        <h4 className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.4em] font-bold mb-4">Context</h4>
-                                        <p className="text-base md:text-lg text-white/80 leading-relaxed font-body">
+                                        <p className="text-base md:text-lg text-white/80 leading-relaxed font-body whitespace-pre-line">
                                             {ps.description}
                                         </p>
                                     </section>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                                        <section>
-                                            <h4 className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.4em] font-bold mb-5 flex items-center gap-2">
-                                                <Zap size={14} className="text-primary" />
-                                                <span>Inputs</span>
-                                            </h4>
-                                            <ul className="space-y-4">
-                                                {ps.inputs?.map((input: string, i: number) => (
-                                                    <li key={i} className="flex items-start gap-4 text-sm text-white/60 font-mono group/item">
-                                                        <span className="text-primary/40 group-hover/item:text-primary transition-colors">0{i + 1}</span>
-                                                        <span className="border-b border-white/5 pb-1 flex-1 group-hover/item:text-white transition-colors">{input}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </section>
-
-                                        <section>
-                                            <h4 className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.4em] font-bold mb-5 flex items-center gap-2">
-                                                <Trophy size={14} className="text-scanline-green" />
-                                                <span>Outputs</span>
-                                            </h4>
-                                            <ul className="space-y-4">
-                                                {ps.outputs?.map((output: string, i: number) => (
-                                                    <li key={i} className="flex items-start gap-4 text-sm text-white/60 font-mono group/item text-balance">
-                                                        <span className="text-scanline-green/40 group-hover/item:text-scanline-green transition-colors">0{i + 1}</span>
-                                                        <span className="border-b border-white/5 pb-1 flex-1 group-hover/item:text-white transition-colors">{output}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </section>
-                                    </div>
 
                                     <section className="p-8 bg-white/[0.02] rounded-2xl border border-white/5 backdrop-blur-sm">
                                         <div className="flex items-center gap-3 mb-4">
@@ -371,7 +350,7 @@ const VinylSleeveDetail = ({ ps, isOpen, onClose }: { ps: any, isOpen: boolean, 
                                         className="w-full py-6 border border-white/10 rounded-xl font-mono text-xs tracking-[0.4em] uppercase hover:bg-white/5 hover:border-white/20 transition-all flex items-center justify-center gap-3 group"
                                     >
                                         <X size={16} className="text-primary transition-transform group-hover:rotate-90" />
-                                        <span>Close Record</span>
+                                        <span>Close Checkpoint</span>
                                     </button>
                                 </div>
                             </motion.div>
@@ -776,13 +755,13 @@ const UnmuteX = () => {
                             <div className="mb-12">
                                 <h2 className="text-4xl font-display uppercase tracking-tight mb-8 flex items-center gap-3 text-primary">
                                     <Layers />
-                                    <span>Interactive Problem Records</span>
+                                    <span>Interactive Problem Statement</span>
                                 </h2>
 
                                 <div className="space-y-1">
                                     <div className="grid grid-cols-12 px-4 py-2 text-[10px] font-mono text-muted-foreground uppercase tracking-widest border-b border-white/5 mb-4">
-                                        <div className="col-span-1">#</div>
-                                        <div className="col-span-11">Problem Statement</div>
+                                        <div className="col-span-2">Checkpoint</div>
+                                        <div className="col-span-10">Intelligent Guideline</div>
                                     </div>
 
                                     {PROBLEM_STATEMENTS.map((ps, i) => (
@@ -925,11 +904,7 @@ const UnmuteX = () => {
             <VinylSleeveDetail
                 isOpen={activeProblemId !== null}
                 onClose={() => setActiveProblemId(null)}
-                ps={[
-                    { id: "01", title: "Audio Extraction & Instrument Classification (The 'Listening' Phase)", description: "The Goal: The system captures audio from the DAW tracks, analyzes the sonic characteristics, and accurately tags the instrument type. ​The Workflow: 1.  The tool (via plugin API or DAW script) grabs short audio buffers or triggers a quick background render of the track. 2.  This audio snippet is fed into an audio classification model. 3.  The model returns an instrument tag (e.g., 'Strings, ' 'Analog Pad,' 'Heavy Percussion') and frequency dominance. ", inputs: ["Primary emotion", "Intensity (1-10)", "Musical style", "Scene duration"], outputs: ["Suggested tempo range", "Tonal center", "Basic harmonic progression", "4-bar MIDI motif"], constraints: "Rule-based or lightweight ML approaches are acceptable. MIDI output is sufficient; audio generation is not required." },
-                    { id: "02", title: "Loudness Compliance Agent", description: "In music, film, OTT, and broadcast workflows, loudness compliance is critical. Participants will build an AI agent that analyses audio loudness metrics to ensure delivery perfection.", inputs: ["LUFS (Intergrated/Short-term)", "True Peak levels", "Dynamic range"], outputs: ["Loudness timeline visualisation", "Non-compliant segment flags", "Indicated delivery targets"], constraints: "The agent must only analyse and explain—it must not process or modify the audio." },
-                    { id: "03", title: "Dialogue–Music Conflict Detection Agent", description: "Participants will build an AI agent that analyses dialogue and music stems to identify frequency overlap and masking, ensuring maximum dialogue intelligibility.", inputs: ["Dialogue stems", "Music background stems", "Frequency balance"], outputs: ["Frequency overlap maps", "Intelligibility warning zones", "Timeline conflict visualisation"], constraints: "The focus is on detection and explanation, not automatic correction." }
-                ].find(p => p.id === activeProblemId)}
+                ps={PROBLEM_STATEMENTS.find(p => p.id === activeProblemId)}
             />
 
             {!isRegistrationActive && (
