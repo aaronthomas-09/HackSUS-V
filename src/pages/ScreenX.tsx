@@ -1,22 +1,19 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Film, Clapperboard, Palette, Music, Scissors, Sparkles, Camera, Mic, ScrollText, Layout, Video, Layers, Sparkle, Rocket } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FilmReelBackground from "@/components/FilmReelBackground";
-import CountdownOverlay from "@/components/CountdownOverlay";
+import HackSUSTitle from "@/components/HackSUSTitle";
 import TrackElapsedTimer from "@/components/TrackElapsedTimer";
 import { useTrackTimer } from "@/hooks/useTrackTimer";
 
 const ScreenX = () => {
     const [countdownActive, setCountdownActive] = useState(false);
+    const [showTitleOverlay, setShowTitleOverlay] = useState(false);
     const { elapsed, startTimer, resetTimer, isStarted } = useTrackTimer("screenx");
 
-    const handleCountdownComplete = useCallback(() => {
-        setCountdownActive(false);
-        startTimer();
-    }, [startTimer]);
+    const launchVideoRef = useRef<HTMLVideoElement>(null);
 
     const handleLaunch = useCallback(() => {
         if (!isStarted) setCountdownActive(true);
@@ -37,24 +34,40 @@ const ScreenX = () => {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [resetTimer, handleLaunch, isStarted]);
 
-    // Film reel data for scrolling rows
-    const filmReelRow1 = [
-        { icon: Film, title: "Scriptwriting", desc: "AI-powered story generation" },
-        { icon: Clapperboard, title: "Storyboarding", desc: "Visual scene planning" },
-        { icon: Camera, title: "Shot Selection", desc: "Shot composition AI" },
-        { icon: Palette, title: "Color Grading", desc: "Automated color correction" },
-        { icon: Scissors, title: "Automated Editing", desc: "Intelligent clip assembly" },
-        { icon: Sparkles, title: "Continuity Check", desc: "AI-powered error detection" },
-    ];
+    // Play launch video with sound when launch starts; start timer when video ends
+    useEffect(() => {
+        const video = launchVideoRef.current;
+        if (!video) return;
 
-    const filmReelRow2 = [
-        { icon: Music, title: "Sound Design", desc: "Audio enhancement AI" },
-        { icon: Mic, title: "Dialogue Cleanup", desc: "AI voice generation" },
-        { icon: Film, title: "Location Scouting", desc: "AI-driven location discovery" },
-        { icon: Clapperboard, title: "Scene Breakdown", desc: "Smart scene analysis" },
-        { icon: Camera, title: "Lighting AI", desc: "Optimal light setup" },
-        { icon: Palette, title: "Moodboard AI", desc: "Cinematic filters" },
-    ];
+        if (countdownActive) {
+            video.currentTime = 0;
+            video.muted = false;
+            video.play().catch(() => { });
+            setShowTitleOverlay(false);
+
+            const onTimeUpdate = () => {
+                if (video.currentTime >= 40) {
+                    setShowTitleOverlay(true);
+                }
+            };
+
+            const onEnded = () => {
+                setCountdownActive(false);
+                setShowTitleOverlay(false);
+                startTimer();
+            };
+
+            video.addEventListener("timeupdate", onTimeUpdate);
+            video.addEventListener("ended", onEnded);
+            return () => {
+                video.removeEventListener("timeupdate", onTimeUpdate);
+                video.removeEventListener("ended", onEnded);
+            };
+        } else {
+            video.pause();
+            setShowTitleOverlay(false);
+        }
+    }, [countdownActive, startTimer]);
 
     const [isRegistrationActive, setIsRegistrationActive] = useState(false);
 
@@ -78,8 +91,16 @@ const ScreenX = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-black">
-            <FilmReelBackground />
+        <div className="relative min-h-screen bg-black">
+            {/* Ambient Background Video — low visibility, no sound */}
+            <video
+                className="fixed inset-0 w-full h-full object-cover opacity-[0.15] pointer-events-none z-0"
+                src="/videos/screenx.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+            />
             {/* Vignette */}
             <div className="absolute inset-0 pointer-events-none z-10"
                 style={{
@@ -167,75 +188,6 @@ const ScreenX = () => {
                     </p>
                 </motion.div>
 
-            </section>
-
-            {/* ═══════════════════ FILM REEL CAROUSELS ═══════════════════ */}
-            <section className="relative py-12 md:py-20 overflow-hidden">
-                {/* Fade to black overlay */}
-                <div className="absolute inset-0 pointer-events-none z-0"
-                    style={{
-                        background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.95) 60%, black 100%)",
-                    }}
-                />
-                {/* Section heading */}
-                <div className="container px-6 mx-auto mb-12 relative z-10">
-                    <h2 className="font-copperplate text-2xl md:text-4xl text-foreground tracking-wider text-center">
-                        The Production Pipeline
-                    </h2>
-                    <div className="w-24 h-[2px] bg-primary mx-auto mt-4" />
-                </div>
-
-                <div className="space-y-2 relative z-10">
-                    {/* Film Strip Row 1 */}
-                    <div className="film-strip">
-                        <motion.div
-                            className="flex gap-0"
-                            animate={{ x: [0, -1500] }}
-                            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-                        >
-                            {[...filmReelRow1, ...filmReelRow1, ...filmReelRow1, ...filmReelRow1].map((item, idx) => {
-                                const Icon = item.icon;
-                                return (
-                                    <div
-                                        key={idx}
-                                        className="flex-shrink-0 w-44 md:w-60 border-l border-r border-primary/10 bg-black px-3 md:px-5 py-4 md:py-6 hover:bg-primary/5 transition-colors group"
-                                    >
-                                        <div className="flex items-center gap-2 md:gap-3 mb-2">
-                                            <Icon className="text-primary group-hover:text-[#ff312e] transition-colors" size={18} />
-                                            <h3 className="font-copperplate text-xs md:text-sm tracking-wider text-foreground uppercase">{item.title}</h3>
-                                        </div>
-                                        <p className="text-[10px] md:text-xs text-muted-foreground font-body">{item.desc}</p>
-                                    </div>
-                                );
-                            })}
-                        </motion.div>
-                    </div>
-
-                    {/* Film Strip Row 2 */}
-                    <div className="film-strip">
-                        <motion.div
-                            className="flex gap-0"
-                            animate={{ x: [-1500, 0] }}
-                            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-                        >
-                            {[...filmReelRow2, ...filmReelRow2, ...filmReelRow2, ...filmReelRow2].map((item, idx) => {
-                                const Icon = item.icon;
-                                return (
-                                    <div
-                                        key={idx}
-                                        className="flex-shrink-0 w-44 md:w-60 border-l border-r border-primary/10 bg-black px-3 md:px-5 py-4 md:py-6 hover:bg-primary/5 transition-colors group"
-                                    >
-                                        <div className="flex items-center gap-2 md:gap-3 mb-2">
-                                            <Icon className="text-primary group-hover:text-[#ff312e] transition-colors" size={18} />
-                                            <h3 className="font-copperplate text-xs md:text-sm tracking-wider text-foreground uppercase">{item.title}</h3>
-                                        </div>
-                                        <p className="text-[10px] md:text-xs text-muted-foreground font-body">{item.desc}</p>
-                                    </div>
-                                );
-                            })}
-                        </motion.div>
-                    </div>
-                </div>
             </section>
 
             {/* ═══════════════════ CONTENT SECTIONS ═══════════════════ */}
@@ -472,13 +424,80 @@ const ScreenX = () => {
 
             <Footer />
 
-            {/* Countdown Overlay */}
-            <CountdownOverlay
-                isActive={countdownActive}
-                trackTitle="SCREENX"
-                fontClass="font-copperplate"
-                onComplete={handleCountdownComplete}
-            />
+            {/* Launch Video — plays fullscreen with sound */}
+            <AnimatePresence>
+                {countdownActive && (
+                    <motion.div
+                        className="fixed inset-0 z-[90] bg-black"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <video
+                            ref={launchVideoRef}
+                            className="absolute inset-0 w-full h-full object-cover"
+                            src="/videos/screenx.mp4"
+                            playsInline
+                        />
+
+                        {/* Title overlay — appears at 40s */}
+                        <AnimatePresence>
+                            {showTitleOverlay && (
+                                <motion.div
+                                    className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 z-10"
+                                    initial={{ scale: 0.5, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                                >
+                                    {/* HackS'US glitch title */}
+                                    <motion.div
+                                        initial={{ y: 20, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ delay: 0.2, duration: 0.8 }}
+                                        className="mb-2 font-BrittanicBold"
+                                    >
+                                        <HackSUSTitle className="text-3xl md:text-5xl" />
+                                    </motion.div>
+
+                                    {/* Separator line */}
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: "100%" }}
+                                        transition={{ delay: 0.4, duration: 0.6 }}
+                                        className="h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent max-w-md"
+                                    />
+
+                                    {/* Track title with glitch jitter */}
+                                    <motion.h1
+                                        initial={{ y: 30, opacity: 0, scale: 0.9 }}
+                                        animate={{
+                                            y: 0,
+                                            opacity: 1,
+                                            scale: [1, 1.02, 0.98, 1.01, 1],
+                                            x: [0, -2, 2, -1, 0]
+                                        }}
+                                        transition={{
+                                            delay: 0.5,
+                                            duration: 1,
+                                            ease: [0.16, 1, 0.3, 1],
+                                            scale: { repeat: Infinity, duration: 0.2, repeatDelay: 1 },
+                                            x: { repeat: Infinity, duration: 0.1, repeatDelay: 1.5 }
+                                        }}
+                                        className="font-copperplate text-5xl md:text-8xl lg:text-9xl font-bold leading-none tracking-wider mt-4"
+                                        style={{
+                                            textShadow: "0 0 40px rgba(255,49,46,0.5), 0 0 80px rgba(255,49,46,0.2)",
+                                        }}
+                                    >
+                                        SCREEN<span className="text-primary">X</span>
+                                    </motion.h1>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
