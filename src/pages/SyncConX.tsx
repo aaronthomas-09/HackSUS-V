@@ -11,6 +11,7 @@ import ShinyText from "@/components/ShinyText";
 import CountdownOverlay from "@/components/CountdownOverlay";
 import TrackElapsedTimer from "@/components/TrackElapsedTimer";
 import { useTrackTimer } from "@/hooks/useTrackTimer";
+import SyncConInauguration from "@/components/SyncConInauguration";
 import SpotlightCard from "@/components/SpotlightCard";
 import Crosshair from "@/components/Crosshair";
 
@@ -112,11 +113,17 @@ const SyncConX = () => {
 
     const [isRegistrationActive, setIsRegistrationActive] = useState(false);
     const [countdownActive, setCountdownActive] = useState(false);
+    const [isInaugurationOpen, setIsInaugurationOpen] = useState(false);
     const { elapsed, startTimer, resetTimer, isStarted } = useTrackTimer("syncconx");
 
     const handleLaunch = useCallback(() => {
-        if (!isStarted) setCountdownActive(true);
+        if (!isStarted) setIsInaugurationOpen(true);
     }, [isStarted]);
+
+    const handleInaugurationComplete = useCallback(() => {
+        setIsInaugurationOpen(false);
+        setCountdownActive(true);
+    }, []);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -821,6 +828,13 @@ const SyncConX = () => {
                 trackTitle="SYNCCONX"
                 fontClass="font-display"
                 onComplete={handleCountdownComplete}
+            />
+
+            {/* Inauguration Simulation */}
+            <SyncConInauguration
+                isOpen={isInaugurationOpen}
+                onComplete={handleInaugurationComplete}
+                onClose={() => setIsInaugurationOpen(false)}
             />
         </div>
     );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import useSound from "use-sound";
 import HackSUSTitle from "./HackSUSTitle";
 
 interface CountdownOverlayProps {
@@ -12,6 +13,7 @@ interface CountdownOverlayProps {
 const CountdownOverlay = ({ isActive, trackTitle, fontClass = "font-display", onComplete }: CountdownOverlayProps) => {
     const [count, setCount] = useState(10);
     const [phase, setPhase] = useState<"counting" | "reveal" | "idle">("idle");
+    const [playGlitch] = useSound("/sounds/glitch.mp3", { volume: 0.5 });
 
     useEffect(() => {
         if (!isActive) {
@@ -29,6 +31,7 @@ const CountdownOverlay = ({ isActive, trackTitle, fontClass = "font-display", on
 
         if (count <= 0) {
             setPhase("reveal");
+            playGlitch();
             return;
         }
 
@@ -122,9 +125,21 @@ const CountdownOverlay = ({ isActive, trackTitle, fontClass = "font-display", on
                                 {/* Track title */}
                                 <motion.h1
                                     initial={{ y: 30, opacity: 0, scale: 0.9 }}
-                                    animate={{ y: 0, opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                    className={`${fontClass} text-5xl md:text-8xl lg:text-9xl font-bold leading-none tracking-wider ${["SYNCCONX", "UNMUTEX", "HELIX"].includes(trackTitle.toUpperCase()) ? "text-white" : "text-primary"}`}
+                                    animate={{
+                                        y: 0,
+                                        opacity: 1,
+                                        scale: [1, 1.02, 0.98, 1.01, 1],
+                                        x: [0, -2, 2, -1, 0]
+                                    }}
+                                    transition={{
+                                        delay: 0.5,
+                                        duration: 1,
+                                        ease: [0.16, 1, 0.3, 1],
+                                        scale: { repeat: Infinity, duration: 0.2, repeatDelay: 1 },
+                                        x: { repeat: Infinity, duration: 0.1, repeatDelay: 1.5 }
+                                    }}
+                                    className={`${fontClass} text-5xl md:text-8xl lg:text-9xl font-bold leading-none tracking-wider`}
+                                    data-text={trackTitle}
                                     style={{
                                         textShadow: "0 0 40px rgba(255,49,46,0.5), 0 0 80px rgba(255,49,46,0.2)",
                                     }}
