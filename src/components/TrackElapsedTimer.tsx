@@ -34,7 +34,7 @@ const TrackElapsedTimer = ({
         >
             {/* Label */}
             <span className={labelClass}>
-        {label}
+                {label}
             </span>
 
             {/* Timer boxes */}
