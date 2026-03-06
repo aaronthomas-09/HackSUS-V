@@ -471,7 +471,7 @@ const AstraX = () => {
   const [animationKey, setAnimationKey] = useState(0);
   const [countdownActive, setCountdownActive] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const { elapsed, startTimer, resetTimer, isStarted } = useTrackTimer("astrax");
+  const { remaining, startTimer, resetTimer, isStarted } = useTrackTimer("astrax");
   const letters = useMemo(() => "ASTRAX".split(""), []);
 
   const handleCountdownComplete = useCallback(() => {
@@ -704,16 +704,17 @@ const AstraX = () => {
             </div>
           </div>
 
-          {/* Elapsed Timer */}
+          {/* Countdown Timer */}
           {isStarted && (
             <TrackElapsedTimer
-              elapsed={elapsed}
+              elapsed={remaining}
               fontClass="font-display"
               labelClass="font-display text-xs text-primary/60 tracking-[0.3em] uppercase"
               boxClass="rounded-xl border border-white/10 bg-white/5"
               numberClass="font-mokoto text-3xl md:text-4xl text-primary"
               glowColor="rgba(255,49,46,0.1)"
-              className="mt-8 mb-8" // Use mt-* or mb-* to move the timer upwards or downwards
+              className="mt-8 mb-8"
+              label="// TIME REMAINING"
             />
           )}
 

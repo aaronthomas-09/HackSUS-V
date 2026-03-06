@@ -34,6 +34,7 @@ export function useTrackTimer(trackName: string) {
     });
 
     const [elapsed, setElapsed] = useState<Elapsed>({ hours: 0, minutes: 0, seconds: 0 });
+    const [remaining, setRemaining] = useState<Elapsed>({ hours: 42, minutes: 0, seconds: 0 });
     const [isLoading, setIsLoading] = useState(false);
 
     // Initial fetch to sync with Google Sheets
@@ -104,6 +105,8 @@ export function useTrackTimer(trackName: string) {
     useEffect(() => {
         if (!startedAt) return;
 
+        const TOTAL_MS = 42 * 60 * 60 * 1000; // 42 hours
+
         const compute = () => {
             const diff = Date.now() - new Date(startedAt).getTime();
             if (diff < 0) return;
@@ -111,6 +114,12 @@ export function useTrackTimer(trackName: string) {
                 hours: Math.floor(diff / (1000 * 60 * 60)),
                 minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
                 seconds: Math.floor((diff % (1000 * 60)) / 1000),
+            });
+            const left = Math.max(TOTAL_MS - diff, 0);
+            setRemaining({
+                hours: Math.floor(left / (1000 * 60 * 60)),
+                minutes: Math.floor((left % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((left % (1000 * 60)) / 1000),
             });
         };
 
@@ -122,6 +131,7 @@ export function useTrackTimer(trackName: string) {
     return {
         startedAt,
         elapsed,
+        remaining,
         startTimer,
         resetTimer,
         isStarted: startedAt !== null,

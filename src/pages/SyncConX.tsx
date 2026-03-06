@@ -114,7 +114,7 @@ const SyncConX = () => {
     const [isRegistrationActive, setIsRegistrationActive] = useState(false);
     const [countdownActive, setCountdownActive] = useState(false);
     const [isInaugurationOpen, setIsInaugurationOpen] = useState(false);
-    const { elapsed, startTimer, resetTimer, isStarted } = useTrackTimer("syncconx");
+    const { remaining, startTimer, resetTimer, isStarted } = useTrackTimer("syncconx");
 
     const handleLaunch = useCallback(() => {
         if (!isStarted) setIsInaugurationOpen(true);
@@ -251,16 +251,17 @@ const SyncConX = () => {
                                 SYNCCONX
                             </motion.h1>
 
-                            {/* Elapsed Timer */}
+                            {/* Countdown Timer */}
                             {isStarted && (
                                 <TrackElapsedTimer
-                                    elapsed={elapsed}
+                                    elapsed={remaining}
                                     fontClass="font-mono"
                                     labelClass="font-mono text-[10px] text-primary/60 tracking-[0.3em] uppercase"
                                     boxClass="rounded-[1rem] border border-primary/20 bg-card/20 backdrop-blur-xl"
                                     numberClass="font-display text-3xl md:text-4xl text-primary"
                                     glowColor="rgba(255,49,46,0.1)"
                                     className="mt-8"
+                                    label="// TIME REMAINING"
                                 />
                             )}
 

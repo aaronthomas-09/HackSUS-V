@@ -425,7 +425,7 @@ const UnmuteX = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isRegistrationActive, setIsRegistrationActive] = useState(false);
     const [countdownActive, setCountdownActive] = useState(false);
-    const { elapsed, startTimer, resetTimer, isStarted } = useTrackTimer("unmutex");
+    const { remaining, startTimer, resetTimer, isStarted } = useTrackTimer("unmutex");
     const embedControllerRef = useRef<any>(null);
 
     const handleCountdownComplete = useCallback(() => {
@@ -640,16 +640,17 @@ const UnmuteX = () => {
                             UNMUTEX
                         </motion.h1>
 
-                        {/* Elapsed Timer */}
+                        {/* Countdown Timer */}
                         {isStarted && (
                             <TrackElapsedTimer
-                                elapsed={elapsed}
+                                elapsed={remaining}
                                 fontClass="font-display"
                                 labelClass="font-mono text-[10px] text-primary/60 tracking-[0.4em] uppercase"
                                 boxClass="bg-charcoal/40 backdrop-blur-md rounded-2xl border border-white/5"
                                 numberClass="font-display text-3xl md:text-4xl text-primary"
                                 glowColor="rgba(255,49,46,0.1)"
                                 className="mt-6 mb-8"
+                                label="// TIME REMAINING"
                             />
                         )}
 

@@ -11,7 +11,7 @@ import { useTrackTimer } from "@/hooks/useTrackTimer";
 const ScreenX = () => {
     const [countdownActive, setCountdownActive] = useState(false);
     const [showTitleOverlay, setShowTitleOverlay] = useState(false);
-    const { elapsed, startTimer, resetTimer, isStarted } = useTrackTimer("screenx");
+    const { remaining, startTimer, resetTimer, isStarted } = useTrackTimer("screenx");
 
     const launchVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -152,13 +152,14 @@ const ScreenX = () => {
                 {isStarted && (
                     <div className="z-20">
                         <TrackElapsedTimer
-                            elapsed={elapsed}
+                            elapsed={remaining}
                             fontClass="font-copperplate"
                             labelClass="font-copperplate text-[10px] text-primary/60 tracking-[0.4em] uppercase"
                             boxClass="border border-primary/20 bg-black"
                             numberClass="font-copperplate text-3xl md:text-4xl text-primary"
                             glowColor="rgba(255,49,46,0.1)"
                             className="mt-8"
+                            label="// TIME REMAINING"
                         />
                     </div>
                 )}

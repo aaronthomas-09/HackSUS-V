@@ -76,7 +76,7 @@ const HeliX = () => {
 
     const [isRegistrationActive, setIsRegistrationActive] = useState(false);
     const [countdownActive, setCountdownActive] = useState(false);
-    const { elapsed, startTimer, resetTimer, isStarted } = useTrackTimer("helix");
+    const { remaining, startTimer, resetTimer, isStarted } = useTrackTimer("helix");
 
     const handleCountdownComplete = useCallback(() => {
         setCountdownActive(false);
@@ -187,16 +187,17 @@ const HeliX = () => {
                                 HELIX
                             </motion.h1>
 
-                            {/* Elapsed Timer */}
+                            {/* Countdown Timer */}
                             {isStarted && (
                                 <TrackElapsedTimer
-                                    elapsed={elapsed}
+                                    elapsed={remaining}
                                     fontClass="font-display"
                                     labelClass="font-mono text-[10px] text-primary/60 tracking-[0.3em] uppercase"
                                     boxClass="bg-card/30 backdrop-blur-xl border border-white/5 rounded-2xl"
                                     numberClass="font-display text-3xl md:text-4xl text-primary"
                                     glowColor="rgba(255,49,46,0.1)"
                                     className="mt-8"
+                                    label="// TIME REMAINING"
                                 />
                             )}
 

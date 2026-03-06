@@ -17,7 +17,8 @@ const TrackElapsedTimer = ({
     numberClass = "font-mono text-4xl md:text-5xl text-primary",
     glowColor = "rgba(255,49,46,0.1)",
     className = "mt-8",
-}: TrackElapsedTimerProps & { className?: string }) => {
+    label = "// EVENT STARTED",
+}: TrackElapsedTimerProps & { className?: string; label?: string }) => {
     const units = [
         { value: elapsed.hours, label: "HOURS" },
         { value: elapsed.minutes, label: "MINS" },
@@ -33,7 +34,7 @@ const TrackElapsedTimer = ({
         >
             {/* Label */}
             <span className={labelClass}>
-        // EVENT STARTED
+        {label}
             </span>
 
             {/* Timer boxes */}
