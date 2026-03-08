@@ -701,7 +701,7 @@ const UnmuteX = () => {
                                     }}
                                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                                 >
-                                    ₹10,000
+                                    ₹30,000
                                 </motion.p>
 
                                 <div className="flex gap-1 mt-4">
