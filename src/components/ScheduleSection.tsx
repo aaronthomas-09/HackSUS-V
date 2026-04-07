@@ -1,7 +1,7 @@
 const schedule = [
   {
     day: "DAY 1",
-    date: "MARCH 15",
+    date: "MARCH 6",
     events: [
       { time: "09:00", title: "Registration Opens", description: "Check-in and badge pickup" },
       { time: "10:00", title: "Opening Ceremony", description: "Welcome address and sponsor introductions" },
@@ -13,7 +13,7 @@ const schedule = [
   },
   {
     day: "DAY 2",
-    date: "MARCH 16",
+    date: "MARCH 7",
     events: [
       { time: "00:00", title: "Midnight Pizza", description: "Fuel up for the night ahead" },
       { time: "08:00", title: "Breakfast", description: "Start fresh with coffee and code" },
@@ -25,7 +25,7 @@ const schedule = [
   },
   {
     day: "DAY 3",
-    date: "MARCH 17",
+    date: "MARCH 8",
     events: [
       { time: "09:00", title: "Submissions Close", description: "All projects must be submitted" },
       { time: "10:00", title: "Judging Begins", description: "Demos to expert panel" },

@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/docs/Astrax_Problem_Statements/:path",
+      "destination": "/docs/Astrax_Problem_Statements/:path"
+    },
+    {
+      "source": "/((?!.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

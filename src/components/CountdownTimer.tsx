@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
-  const targetDate = new Date("2025-03-15T09:00:00").getTime();
-  
+  const targetDate = new Date("2026-03-06T06:00:00").getTime();
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -39,12 +39,12 @@ const CountdownTimer = () => {
     <section id="register" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-radial from-primary/20 via-transparent to-transparent" />
-      
+
       <div className="container px-6 relative text-center">
         {/* Header */}
         <span className="font-mono text-sm text-primary tracking-[0.3em]">// TIME IS RUNNING OUT</span>
         <h2 className="font-display text-5xl md:text-6xl text-foreground mt-4 mb-12">
-          REGISTRATION <span className="text-primary">CLOSES</span>
+          HackS'US <span className="text-primary">STARTS IN</span>
         </h2>
 
         {/* Countdown */}
@@ -77,13 +77,14 @@ const CountdownTimer = () => {
         {/* CTA */}
         <div className="mt-8">
           <a
-            href="#"
-            className="inline-block bg-gradient-to-r from-primary to-accent text-primary-foreground font-display text-xl tracking-widest uppercase px-12 py-5 hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_hsl(var(--electric-red)/0.5)] hover:shadow-[0_0_50px_hsl(var(--electric-red)/0.7)] animate-glow-pulse"
+            href="https://konfhub.com/hacksus-edition-5"
+            target="_blank" rel="noopener noreferrer"
+            className="inline-block bg-gradient-to-r from-primary to-accent text-primary-foreground font-display text-xl tracking-widest uppercase px-12 py-5 hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_hsl(var(--electric-red)/0.5)] hover:shadow-[0_0_50px_hsl(var(--electric-red)/0.7)] rounded-2xl"
           >
             REGISTER NOW
           </a>
           <p className="font-mono text-sm text-muted-foreground mt-4">
-            Limited spots available • Free to attend
+            Limited spots available • Not Free to attend!
           </p>
         </div>
       </div>

@@ -1,73 +1,53 @@
-# Welcome to your Lovable project
+# HackS'US Edition V
 
-## Project info
+## Project Overview
+**HackS'US Edition V** is a premiere hackathon organized by the **IEDC** and **IIC** of Rajagiri School of Engineering & Technology (RSET). The project is a multi-track hackathon platform featuring distinct visual identities for each track (Side X).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## File Structure
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```text
+HackSUS-V/
+├── docs/                 # Documentation and Problem Statements (PDFs)
+├── public/               # Static assets (images, logos, videos, fonts)
+├── src/
+│   ├── components/       # Shared UI components (Navbar, Footer, Section layouts)
+│   ├── pages/            # Main page components for each event track
+│   │   ├── Index.tsx     # Landing page for HackS'US Edition V
+│   │   ├── AstraX.tsx    # Tech/Software track
+│   │   ├── CarbonX.tsx   # Sustainability/Eco track
+│   │   ├── HeliX.tsx     # Aerospace track
+│   │   ├── Kruizex.tsx   # Kochi Water Metro - Problathon
+│   │   ├── ScreenX.tsx   # Media/Entertainment track
+│   │   ├── SyncConX.tsx  # Hardware/IoT track
+│   │   └── UnmuteX.tsx   # Music/Sonic tech track
+│   ├── App.tsx           # Main application entry and routing
+│   └── main.tsx          # React mount point
+└── vercel.json           # Vercel deployment configuration
 ```
 
-**Edit a file directly in GitHub**
+## Event Tracks & Aesthetics
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Each track has a unique design language tailored to its theme:
 
-**Use GitHub Codespaces**
+- **Index (Main)**: The central hub featuring a clean, dark-themed dashboard look with high-energy red accents.
+- **Astra X (Software)**: Futuristic and data-driven, featuring holographic cards and network graph visualizations.
+- **Carbon X (Electrical & Electronics)**: The flagship hardware-centric track by the ECE department. It features two specialized lanes:
+    - **Vegathon**: Focused on systems-level builds using the indigenous VEGA processor lineage.
+    - **Electrothon**: Focused on EDA-based workflows (Design, Simulate, Validate).
+    - **Aesthetics**: High-tech "circuit board" design with magnetic particle effects and deep-tech elements.
+- **Heli X (Civil Engineering)**: Industrial blueprint aesthetic where "AI meets Modern Civil Engineering." It features technical dimension lines, crosshair cursors, structural equations, and a drafting-table background.
+- **Kruize X (KMRL Problathon Pre-Event)**: Theme inspired by the Kochi Water Metro, featuring deep blue gradients and water-inspired aesthetics.
+- **Unmute X (Music)**: Audio-centric design featuring a revolving vinyl record header and "Now Playing" navigation bars.
+- **Screen X (Film & Creator Tech)**: Cinematic aesthetic "Where AI meets the art of filmmaking." It features a film-reel background, production pipeline carousels (storyboarding, editing, etc.), and a vintage movie-theatre vibe.
+- **SyncCon X (Electrical & Instrumentation)**: Industrial systems focus, featuring components like "Industrial Oscilloscopes" and instrumentation-themed layouts.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **React & Vite**: Fast development and optimized production builds.
+- **TypeScript**: Type-safe development.
+- **Framer Motion**: Smooth, high-performance animations and transitions.
+- **Tailwind CSS**: Modern utility-first styling.
+- **Lucide React**: Comprehensive icon system.
+- **shadcn/ui**: High-quality pre-built accessible components.

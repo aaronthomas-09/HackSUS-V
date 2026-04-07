@@ -57,8 +57,11 @@ export default {
       },
       fontFamily: {
         display: ["Bebas Neue", "sans-serif"],
+        tanNimbus: ["'Tan Nimbus'", "Bebas Neue", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
         body: ["Inter", "sans-serif"],
+        BrittanicBold: ["'BrittanicBold'", "sans-serif"],
+        copperplate: ["'CopperplateCC'", "Copperplate", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

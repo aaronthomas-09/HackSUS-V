@@ -4,26 +4,26 @@ const details = [
   {
     icon: Calendar,
     title: "WHEN",
-    value: "March 15-17, 2025",
-    description: "36 hours of non-stop innovation",
+    value: "March 6-8, 2026",
+    description: "March 6th, 7:30 pm to March 8th, 3:00pm",
   },
   {
     icon: MapPin,
     title: "WHERE",
-    value: "Tech Campus Arena",
-    description: "123 Innovation Drive, Silicon Valley",
+    value: "Rajagiri School Of Engineering & Technology",
+    description: "Rajagiri Valley, Kakkanad, Kerala",
   },
   {
     icon: Users,
     title: "WHO",
     value: "Students & Developers",
-    description: "Teams of 1-4 hackers welcome",
+    description: "Teams of 4-6 hackers welcome",
   },
   {
     icon: Zap,
     title: "WHAT",
     value: "Build & Present",
-    description: "Create solutions, win prizes",
+    description: "Create workflows, win prizes",
   },
 ];
 
@@ -32,7 +32,7 @@ const DetailsSection = () => {
     <section id="details" className="relative py-24 md:py-32 bg-charcoal">
       {/* Grid background */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-20" />
-      
+
       <div className="container px-6 relative">
         {/* Section header */}
         <div className="text-center mb-16">
